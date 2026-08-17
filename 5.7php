@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smooth Scroll to Top</title>
+
+    <!-- jQuery Library -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .content {
+            height: 1500px;
+        }
+
+        #topButton {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            padding: 12px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #topButton:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1 id="top">My Web Page</h1>
+
+    <div class="content">
+        <p>Scroll down the page to see the button.</p>
+        <br><br><br><br>
+        <h2>Page Content</h2>
+        <p>This is some sample content.</p>
+        <br><br><br><br>
+        <p>Keep scrolling down...</p>
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <button id="topButton">Scroll to Top</button>
+
+    <script>
+        $(document).ready(function () {
+
+            $("#topButton").click(function () {
+
+                $("html, body").animate({
+                    scrollTop: 0
+                }, 1000);
+
+            });
+
+        });
+    </script>
+
+</body>
+</html>

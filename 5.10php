@@ -1,0 +1,162 @@
+<?php
+
+// AJAX request handle karna
+if (isset($_GET['page'])) {
+
+    $page = $_GET['page'];
+
+    if ($page == "home") {
+
+        echo "<h2>Home</h2>";
+        echo "<p>Welcome to our website.</p>";
+
+    } 
+    elseif ($page == "about") {
+
+        echo "<h2>About Us</h2>";
+        echo "<p>We provide useful information and services.</p>";
+
+    } 
+    elseif ($page == "products") {
+
+        echo "<h2>Products</h2>";
+        echo "<ul>";
+        echo "<li>Laptop</li>";
+        echo "<li>Mobile Phone</li>";
+        echo "<li>Keyboard</li>";
+        echo "<li>Mouse</li>";
+        echo "</ul>";
+
+    } 
+    elseif ($page == "contact") {
+
+        echo "<h2>Contact Us</h2>";
+        echo "<p>Email: example@gmail.com</p>";
+        echo "<p>Phone: 9876543210</p>";
+
+    } 
+    else {
+
+        echo "<h2>Page Not Found</h2>";
+
+    }
+
+    exit();
+}
+
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>AJAX Navigation Menu</title>
+
+    <!-- jQuery Library -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+        }
+
+        /* Navigation Menu */
+        nav {
+            background-color: #333;
+            padding: 15px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 25px;
+            cursor: pointer;
+        }
+
+        nav a:hover {
+            color: yellow;
+        }
+
+        /* Content */
+        #content {
+            padding: 30px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <h1 style="padding-left:30px;">
+        My Website
+    </h1>
+
+    <!-- Navigation Menu -->
+    <nav>
+
+        <a class="menu" data-page="home">Home</a>
+
+        <a class="menu" data-page="about">About</a>
+
+        <a class="menu" data-page="products">Products</a>
+
+        <a class="menu" data-page="contact">Contact</a>
+
+    </nav>
+
+    <!-- Dynamic Content -->
+    <div id="content">
+
+        <h2>Home</h2>
+        <p>Welcome to our website.</p>
+
+    </div>
+
+
+    <script>
+
+        $(document).ready(function () {
+
+            $(".menu").click(function () {
+
+                var page = $(this).data("page");
+
+                // AJAX request
+                $.ajax({
+
+                    url: "index.php",
+
+                    type: "GET",
+
+                    data: {
+                        page: page
+                    },
+
+                    success: function (response) {
+
+                        // Display server response
+                        $("#content").html(response);
+
+                    },
+
+                    error: function () {
+
+                        $("#content").html(
+                            "<p>Error loading content.</p>"
+                        );
+
+                    }
+
+                });
+
+            });
+
+        });
+
+    </script>
+
+</body>
+</html>

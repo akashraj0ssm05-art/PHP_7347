@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Check jQuery</title>
+
+    <!-- Include jQuery Library -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            if (typeof jQuery != "undefined") {
+                $("#message").html("jQuery is successfully loaded.");
+            } else {
+                $("#message").html("jQuery is not available.");
+            }
+
+        });
+    </script>
+</head>
+
+<body>
+
+    <h2>jQuery Library Check</h2>
+
+    <p id="message">Checking jQuery...</p>
+
+</body>
+</html>

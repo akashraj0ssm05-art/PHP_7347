@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AJAX Input Example</title>
+
+    <script>
+        function showResult(str) {
+            if (str.length == 0) {
+                document.getElementById("result").innerHTML = "";
+                return;
+            }
+
+            var xmlhttp = new XMLHttpRequest();
+
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("result").innerHTML = this.responseText;
+                }
+            };
+
+            xmlhttp.open("GET", "server.php?q=" + str, true);
+            xmlhttp.send();
+        }
+    </script>
+</head>
+
+<body>
+
+    <h2>Type Your Name</h2>
+
+    <input type="text" onkeyup="showResult(this.value)" 
+           placeholder="Enter your name">
+
+    <p>Server Response:</p>
+
+    <div id="result"></div>
+
+</body>
+</html>
